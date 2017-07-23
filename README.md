@@ -1,4 +1,4 @@
-#Python Rubiks 2x2x2 Cube Solver REST Servcie
+# Python Rubiks 2x2x2 Cube Solver REST Servcie
 
 ## Introduction:
 This a Python REST Service which takes the scrambled color code pattern through JSON request and returns and Optimal Solution to Solve the 2x2x2 Rubiks cube in a JSON response. The Code Outputs the Solution using only the Right(R), Front(F) and Up(U) faces.
@@ -54,12 +54,12 @@ The input will be given in the format:
 abcdefghijklmnopqrstuvwx
 ```
 
-abcd - will make the Upper Face
-efmn - will make the Left Face
-ghop - will make the Front Face
-ijqr - will make the Right Face
-klst - will make the Back Face
-uvwx - will make the Bottom Face
+abcd - will make the Upper Face;
+efmn - will make the Left Face;
+ghop - will make the Front Face;
+ijqr - will make the Right Face;
+klst - will make the Back Face;
+uvwx - will make the Bottom Face;
 
 There will be six unique characters representing each color, and they can vary, you can use any combination of 6 ascii characters for each color.
 
