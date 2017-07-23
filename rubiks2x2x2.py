@@ -21,6 +21,9 @@ logging.basicConfig(level=logging.DEBUG,format='%(asctime)s | %(name)s | %(level
 
 logger = logging.getLogger(__name__)
 
+logicpattern = 'acahabcdnpbfegefhugiovjgqkciljdeklflmmmnnvoopxphrqdjrrbsstttuuqsviwwwkxx'
+faces = 'RUF'
+
 
 class TwobyTwobyTwo(object):
         def on_post(self , req , resp):
@@ -51,15 +54,16 @@ def solve(pattern):
 	try:
 		op = ''.join
 	        z = [{op((' ', pt)[pt in pattern[12] + pattern[19] + pattern[22]] for pt in pattern): []}, {' ' * 4 + (pattern[12] * 2 + ' ' * 4 + pattern[19] * 2) * 2 + pattern[22] * 4: []}]
-	        for a in [0, 1] * 6:
-	                for (b, c) in z[a].items():
-	                        for d in range(12):
-	                                z[a][b] = c + [d - [1, -1, 1, 3][a * d % 4]]
-	                                if b in z[1 - a]:
-                                                out  = op('RUF'[c / 4] + " 2'"[c % 4] for c in z[0][b] + z[1][b][::-1])
-                                                logger.info("Solution: " + out)
-                                                return out,"nil"
-	                                b = op(b[ord(c) - 97] for c in 'acahabcdnpbfegefhugiovjgqkciljdeklflmmmnnvoopxphrqdjrrbsstttuuqsviwwwkxx'[(d / 4)::3])
+		for i in range(6):
+		        for a in [0, 1]:
+		                for (b, c) in z[a].items():
+		                        for d in range(12):
+		                                z[a][b] = c + [d - [1, -1, 1, 3][a * d % 4]]
+		                                if b in z[1 - a]:
+	                                                out  = op(faces[c / 4] + " 2'"[c % 4] for c in z[0][b] + z[1][b][::-1])
+	                                                logger.info("Solution: " + out)
+	                                                return out,"nil"
+		                                b = op(b[ord(c) - 97] for c in logicpattern[(d / 4)::3])
 	except Exception as err:
 		logger.info("Failed")
 		logger.exception(err)
